@@ -3,29 +3,24 @@ import { Todo } from "../types/Todo";
 const todos = [
   {
     id: 1,
-    title: "Learn HTML",
+    title: "Todo 1",
     completed: false,
   },
   {
     id: 2,
-    title: "Learn CSS",
+    title: "Todo 2",
     completed: false,
   },
   {
     id: 3,
-    title: "Learn Javascript",
+    title: "Todo 3",
     completed: false,
   },
   {
     id: 4,
-    title: "Learn React",
+    title: "Todo 4",
     completed: false,
-  },
-  {
-    id: 5,
-    title: "Learn Next.js",
-    completed: false,
-  },
+  }
 ];
 
 export const fetchTodos = async (query = ""): Promise<Todo[]> => {
