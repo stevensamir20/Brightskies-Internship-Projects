@@ -1,4 +1,5 @@
 import { Todo } from "../types/Todo";
+import { Post } from "../types/Post";
 
 const todos = [
   {
@@ -23,6 +24,21 @@ const todos = [
   }
 ];
 
+const posts = [
+  {
+    id: 1,
+    title: "Post 1",
+  },
+  {
+    id: 2,
+    title: "Post 2",
+  },
+  {
+    id: 3,
+    title: "Post 3",
+  },
+];
+
 export const fetchTodos = async (query = ""): Promise<Todo[]> => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -37,7 +53,7 @@ export const fetchTodos = async (query = ""): Promise<Todo[]> => {
 
 
 export const addTodo = async (todo: Pick<Todo, "title">): Promise<Todo> => {
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   const newTodo = {
     id: todos.length + 1,
     title: todo.title,
@@ -47,4 +63,23 @@ export const addTodo = async (todo: Pick<Todo, "title">): Promise<Todo> => {
   todos.push(newTodo);
 
   return newTodo;
+};
+
+export const fetchPosts = async (): Promise<Post[]> => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  console.log("fetched posts");
+  return posts;
+};
+
+export const addPost = async (post: Pick<Post, "title">): Promise<Post> => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const newPost = {
+    id: todos.length + 1,
+    title: post.title,
+  };
+
+  posts.push(newPost);
+
+  return newPost;
 };

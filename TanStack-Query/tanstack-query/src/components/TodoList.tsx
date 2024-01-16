@@ -8,10 +8,15 @@ export const TodoList = () => {
   const [title, setTitle] = useState("");
   const search = "";
 
-  const { data: todos, isLoading } = useQuery({
+  const {
+    data: todos,
+    isLoading,
+    isFetching,
+    isFetched,
+  } = useQuery({
     queryKey: ["todos", { search }],
     queryFn: () => fetchTodos(search),
-    staleTime: Infinity,
+    staleTime: 2000,
   });
 
   const { mutateAsync: addTodoMutation } = useMutation({
@@ -19,14 +24,23 @@ export const TodoList = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["todos"] });
     },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
+    },
+    mutationKey: ["addTodo"],
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Loading Todos...</div>;
   }
 
   return (
     <div>
+      <ul>
+        <li>isFetching: {isFetching.toString()}</li>
+        <li>isFetched: {isFetched.toString()}</li>
+        <li>isLoading: {isLoading.toString()}</li>
+      </ul>
       <div>
         <input
           type="text"
