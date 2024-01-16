@@ -5,8 +5,8 @@ import { TodoCard } from "./TodoCard";
 
 export const TodoList = () => {
   const queryClient = useQueryClient();
-  const [search, setSearch] = useState("");
   const [title, setTitle] = useState("");
+  const search = "";
 
   const { data: todos, isLoading } = useQuery({
     queryKey: ["todos", { search }],

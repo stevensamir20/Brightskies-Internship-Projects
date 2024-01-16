@@ -32,8 +32,6 @@ export const fetchTodos = async (query = ""): Promise<Todo[]> => {
     todo.title.toLowerCase().includes(query.toLowerCase())
   );
 
-  // throw new Error();
-
   return [...filteredTodos];
 };
 
