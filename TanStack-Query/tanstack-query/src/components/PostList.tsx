@@ -15,8 +15,14 @@ export const PostList = () => {
   const { mutateAsync: addPostMutation } = useMutation({
     mutationFn: addPost,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["posts"] });
+      // queryClient.invalidateQueries({ queryKey: ["posts"] });
+      queryClient.invalidateQueries();
     },
+    // onSuccess: () =>
+    //   Promise.all([
+    //     queryClient.invalidateQueries({ queryKey: ["posts"] }),
+    //     queryClient.invalidateQueries({ queryKey: ["todos"] }),
+    //   ]),
     mutationKey: ["addPost"],
   });
 

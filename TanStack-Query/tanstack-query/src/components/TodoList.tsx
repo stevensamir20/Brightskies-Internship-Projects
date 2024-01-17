@@ -17,6 +17,7 @@ export const TodoList = () => {
     queryKey: ["todos", { search }],
     queryFn: () => fetchTodos(search),
     staleTime: 2000,
+    refetchInterval: 8000,
   });
 
   const { mutateAsync: addTodoMutation } = useMutation({
