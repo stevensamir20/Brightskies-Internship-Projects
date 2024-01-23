@@ -16,7 +16,7 @@ export const PostList = () => {
     mutationFn: addPost,
     onSuccess: () => {
       // queryClient.invalidateQueries({ queryKey: ["posts"] });
-      queryClient.invalidateQueries();
+      queryClient.invalidateQueries({predicate: (query) => query.queryKey[0] === 'posts' });
     },
     // onSuccess: () =>
     //   Promise.all([

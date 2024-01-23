@@ -18,6 +18,7 @@ export const TodoList = () => {
     queryFn: () => fetchTodos(search),
     staleTime: 2000,
     refetchInterval: 8000,
+    retry: 3,
   });
 
   const { mutateAsync: addTodoMutation } = useMutation({
